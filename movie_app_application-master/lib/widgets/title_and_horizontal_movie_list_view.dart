@@ -5,12 +5,13 @@ import 'package:movie_app/resources/strings.dart';
 import 'package:movie_app/view_items/movie_view.dart';
 import 'package:movie_app/widgets/title_text.dart';
 
-class BestPopularMoviesAndSerialsSectionView extends StatelessWidget {
+class TitleAndHorizontalMovieListView extends StatelessWidget {
   final Function(int?) onTapMovie;
+  final String title;
   final List<MovieVO>? nowPlayingMovies;
 
-  BestPopularMoviesAndSerialsSectionView(this.onTapMovie,
-      {required this.nowPlayingMovies});
+  TitleAndHorizontalMovieListView(this.onTapMovie,
+      {required this.nowPlayingMovies,required this.title});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +20,7 @@ class BestPopularMoviesAndSerialsSectionView extends StatelessWidget {
       children: [
         Container(
           margin: EdgeInsets.only(left: MARGIN_MEDIUM_2),
-          child: TitleText(MAIN_SCREEN_BEST_POPULAR_MOVIES_AND_SERIALS),
+          child: TitleText(title),
         ),
         SizedBox(
           height: MARGIN_LARGE,

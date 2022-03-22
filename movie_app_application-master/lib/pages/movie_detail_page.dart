@@ -17,6 +17,8 @@ import 'package:movie_app/widgets/rating_view.dart';
 import 'package:movie_app/widgets/title_text.dart';
 import 'package:provider/provider.dart';
 
+import '../widgets/title_and_horizontal_movie_list_view.dart';
+
 class MovieDetailPage extends StatelessWidget {
   final int movieId;
 
@@ -83,10 +85,23 @@ class MovieDetailPage extends StatelessWidget {
                                   ? ActorsAndCreatorsSectionView(
                                       MOVIE_DETAILS_SCREEN_CREATORS_TITLE,
                                       MOVIE_DETAILS_SCREEN_CREATORS_SEE_MORE,
-                                      actors: crewList ?? [],
+                                      actors: crewList,
                                     )
                                   : Container();
                             },
+                          ),
+                          SizedBox(
+                            height: MARGIN_LARGE,
+                          ),
+                          Selector<MovieDetailsBloc, List<MovieVO>?>(
+                            selector: (context, bloc) => bloc.mRelatedMovies,
+                            builder: (context, relatedMovies, child) =>
+                                TitleAndHorizontalMovieListView(
+                              (movieId) => _navigateToMovieDetailScreen(
+                                  context, movieId),
+                              nowPlayingMovies: relatedMovies,
+                              title: MOVIE_DETAILS_SCREEN_RELATED_MOVIES,
+                            ),
                           ),
                         ]),
                       ),
@@ -96,6 +111,19 @@ class MovieDetailPage extends StatelessWidget {
                     child: CircularProgressIndicator(),
                   ),
           ),
+        ),
+      ),
+    );
+  }
+}
+
+void _navigateToMovieDetailScreen(BuildContext context, int? movieId) {
+  if (movieId != null) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => MovieDetailPage(
+          movieId: movieId,
         ),
       ),
     );
