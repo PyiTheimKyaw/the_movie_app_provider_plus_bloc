@@ -15,6 +15,9 @@ class HomeBloc extends ChangeNotifier {
   List<ActorVO>? mActors;
   MovieModel mMovieModel = MovieModelImpl();
 
+  ///Page
+  int pageForNowPlayingMovies=1;
+
   HomeBloc() {
     ///Now Playing Movies Database
     mMovieModel.getNowPlayingMoviesFromDatabase().listen((movieList) {
@@ -27,6 +30,7 @@ class HomeBloc extends ChangeNotifier {
     ///Popular Movies Database
     mMovieModel.getPopularMoviesFromDatabase().listen((movieList) {
       mPopularMovies = movieList;
+      mNowPlayingMovies?.sort((a,b) => a.id! - b.id!);
       notifyListeners();
     }).onError((error) {
       debugPrint(error.toString());
@@ -77,6 +81,10 @@ class HomeBloc extends ChangeNotifier {
     }).catchError((error) {
       debugPrint(error.toString());
     });
+  }
+  void onNowPlayingMovieListEndReached(){
+    pageForNowPlayingMovies+=1;
+    mMovieModel.getNowPlayingMovies(pageForNowPlayingMovies);
   }
   void onTapGenre(int genreId){
     getMoviesByGenreAndRefresh(genreId);

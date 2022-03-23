@@ -2,6 +2,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:movie_app/blocs/home_bloc.dart';
 import 'package:movie_app/blocs/movie_details_bloc.dart';
 import 'package:movie_app/data/data.vos/actor_vo.dart';
 import 'package:movie_app/data/data.vos/movie_vo.dart';
@@ -101,6 +102,11 @@ class MovieDetailPage extends StatelessWidget {
                                   context, movieId),
                               nowPlayingMovies: relatedMovies,
                               title: MOVIE_DETAILS_SCREEN_RELATED_MOVIES,
+                              onListEndReached: () {
+                                var bloc = Provider.of<HomeBloc>(context,
+                                    listen: false);
+                                bloc.onNowPlayingMovieListEndReached();
+                              },
                             ),
                           ),
                         ]),
