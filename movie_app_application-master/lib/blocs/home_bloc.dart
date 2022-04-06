@@ -18,7 +18,10 @@ class HomeBloc extends ChangeNotifier {
   ///Page
   int pageForNowPlayingMovies=1;
 
-  HomeBloc() {
+  HomeBloc([MovieModel? movieModel]) {
+    if(movieModel!=null){
+      mMovieModel=movieModel;
+    }
     ///Now Playing Movies Database
     mMovieModel.getNowPlayingMoviesFromDatabase().listen((movieList) {
       mNowPlayingMovies = movieList;
