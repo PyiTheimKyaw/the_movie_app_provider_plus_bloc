@@ -6,6 +6,9 @@ import 'package:movie_app/network/dataagents/movie_data_agents.dart';
 import 'package:movie_app/network/dataagents/retrofit_data_agents_impl.dart';
 import 'package:movie_app/persistance/daos/actor_dao.dart';
 import 'package:movie_app/persistance/daos/genre_dao.dart';
+import 'package:movie_app/persistance/daos/impl/actor_dao_impl.dart';
+import 'package:movie_app/persistance/daos/impl/genre_dao_impl.dart';
+import 'package:movie_app/persistance/daos/impl/movie_dao_impl.dart';
 import 'package:movie_app/persistance/daos/movie_dao.dart';
 import 'package:stream_transform/stream_transform.dart';
 
@@ -22,9 +25,9 @@ class MovieModelImpl extends MovieModel{
   MovieDataAgent _dataAgent = RetrofitDataAgentImpl();
 
   ///Dao
-  MovieDao mMovieDao = MovieDao();
-  GenreDao mGenreDao = GenreDao();
-  ActorDao mActorDao = ActorDao();
+  MovieDao mMovieDao = MovieDaoImpl();
+  GenreDao mGenreDao = GenreDaoImpl();
+  ActorDao mActorDao = ActorDaoImpl();
 
 
   ///Network
