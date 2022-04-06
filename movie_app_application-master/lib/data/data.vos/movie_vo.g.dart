@@ -31,21 +31,21 @@ class MovieVOAdapter extends TypeAdapter<MovieVO> {
       fields[12] as bool?,
       fields[13] as double?,
       fields[14] as int?,
-      fields[15] as CollectionVO?,
-      fields[16] as double?,
-      (fields[17] as List?)?.cast<GenreVO>(),
-      fields[18] as String?,
-      fields[19] as String?,
-      (fields[20] as List?)?.cast<ProductionCompanyVO>(),
-      (fields[21] as List?)?.cast<ProductionCountryVO>(),
-      fields[22] as int?,
-      fields[23] as int?,
-      (fields[24] as List?)?.cast<SpokenLanguageVO>(),
-      fields[25] as String?,
-      fields[26] as String?,
-      fields[27] as bool?,
-      fields[28] as bool?,
-      fields[29] as bool?,
+      belongsToCollection: fields[15] as CollectionVO?,
+      budget: fields[16] as double?,
+      genres: (fields[17] as List?)?.cast<GenreVO>(),
+      homePage: fields[18] as String?,
+      imdbId: fields[19] as String?,
+      productionCompanies: (fields[20] as List?)?.cast<ProductionCompanyVO>(),
+      productionCountries: (fields[21] as List?)?.cast<ProductionCountryVO>(),
+      revenue: fields[22] as int?,
+      runTime: fields[23] as int?,
+      spokenLanguages: (fields[24] as List?)?.cast<SpokenLanguageVO>(),
+      status: fields[25] as String?,
+      tagLine: fields[26] as String?,
+      isNowPlaying: fields[27] as bool?,
+      isPopular: fields[28] as bool?,
+      isTopRated: fields[29] as bool?,
     );
   }
 
@@ -128,7 +128,7 @@ class MovieVOAdapter extends TypeAdapter<MovieVO> {
 // JsonSerializableGenerator
 // **************************************************************************
 
-MovieVO _$MovieVOFormJson(Map<String, dynamic> json) => MovieVO(
+MovieVO _$MovieVOFromJson(Map<String, dynamic> json) => MovieVO(
       json['adult'] as bool?,
       json['backdrop_path'] as String?,
       (json['genre_ids'] as List<dynamic>?)?.map((e) => e as int).toList(),
@@ -143,32 +143,32 @@ MovieVO _$MovieVOFormJson(Map<String, dynamic> json) => MovieVO(
       json['video'] as bool?,
       (json['vote_average'] as num?)?.toDouble(),
       json['vote_count'] as int?,
-      json['belongs_to_collection'] == null
+      belongsToCollection: json['belongs_to_collection'] == null
           ? null
           : CollectionVO.fromJson(
               json['belongs_to_collection'] as Map<String, dynamic>),
-      (json['budget'] as num?)?.toDouble(),
-      (json['genres'] as List<dynamic>?)
+      budget: (json['budget'] as num?)?.toDouble(),
+      genres: (json['genres'] as List<dynamic>?)
           ?.map((e) => GenreVO.fromJson(e as Map<String, dynamic>))
           .toList(),
-      json['homepage'] as String?,
-      json['imdb_id'] as String?,
-      (json['production_companies'] as List<dynamic>?)
+      homePage: json['homepage'] as String?,
+      imdbId: json['imdb_id'] as String?,
+      productionCompanies: (json['production_companies'] as List<dynamic>?)
           ?.map((e) => ProductionCompanyVO.fromJson(e as Map<String, dynamic>))
           .toList(),
-      (json['production_countries'] as List<dynamic>?)
+      productionCountries: (json['production_countries'] as List<dynamic>?)
           ?.map((e) => ProductionCountryVO.fromJson(e as Map<String, dynamic>))
           .toList(),
-      json['revenue'] as int?,
-      json['runtime'] as int?,
-      (json['spoken_languages'] as List<dynamic>?)
+      revenue: json['revenue'] as int?,
+      runTime: json['runtime'] as int?,
+      spokenLanguages: (json['spoken_languages'] as List<dynamic>?)
           ?.map((e) => SpokenLanguageVO.fromJson(e as Map<String, dynamic>))
           .toList(),
-      json['status'] as String?,
-      json['tagline'] as String?,
-      json['isNowPlaying'] as bool?,
-      json['isPopular'] as bool?,
-      json['isTopRated'] as bool?,
+      status: json['status'] as String?,
+      tagLine: json['tagline'] as String?,
+      isNowPlaying: json['isNowPlaying'] as bool?,
+      isPopular: json['isPopular'] as bool?,
+      isTopRated: json['isTopRated'] as bool?,
     );
 
 Map<String, dynamic> _$MovieVOToJson(MovieVO instance) => <String, dynamic>{

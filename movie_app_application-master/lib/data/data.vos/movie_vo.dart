@@ -132,39 +132,40 @@ class MovieVO {
   bool? isTopRated;
 
   MovieVO(
-      this.adult,
-      this.backDropPath,
-      this.genreIds,
-      this.id,
-      this.originalLanguage,
-      this.originalTitle,
-      this.overView,
-      this.popularity,
-      this.posterPath,
-      this.releaseDate,
-      this.title,
-      this.video,
-      this.voteAverage,
-      this.voteCount,
-      this.belongsToCollection,
-      this.budget,
-      this.genres,
-      this.homePage,
-      this.imdbId,
-      this.productionCompanies,
-      this.productionCountries,
-      this.revenue,
-      this.runTime,
-      this.spokenLanguages,
-      this.status,
-      this.tagLine,
-      this.isNowPlaying,
-      this.isPopular,
-      this.isTopRated);
+    this.adult,
+    this.backDropPath,
+    this.genreIds,
+    this.id,
+    this.originalLanguage,
+    this.originalTitle,
+    this.overView,
+    this.popularity,
+    this.posterPath,
+    this.releaseDate,
+    this.title,
+    this.video,
+    this.voteAverage,
+    this.voteCount, {
+    this.belongsToCollection,
+    this.budget,
+    this.genres,
+    this.homePage,
+    this.imdbId,
+    this.productionCompanies,
+    this.productionCountries,
+    this.revenue,
+    this.runTime,
+    this.spokenLanguages,
+    this.status,
+    this.tagLine,
+    required this.isNowPlaying,
+    required this.isPopular,
+    required this.isTopRated,
+  });
 
   //json to object
   factory MovieVO.fromJson(Map<String, dynamic> json) =>
-      _$MovieVOFormJson(json);
+      _$MovieVOFromJson(json);
 
   //object to json
   Map<String, dynamic> toJson() => _$MovieVOToJson(this);

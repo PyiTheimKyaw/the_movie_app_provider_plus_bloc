@@ -8,34 +8,32 @@ part 'actor_vo.g.dart';
 ///ActorVO is used in getActorsResponse and getCreditByMoviesResponse.
 ///In getCreditByMoviesResponse,in both cast and crew.
 
-
 @JsonSerializable()
-@HiveType(typeId: HIVE_TYPE_ID_ACTOR_VO,adapterName: "ActorVOAdapter")
-class ActorVO{
-
+@HiveType(typeId: HIVE_TYPE_ID_ACTOR_VO, adapterName: "ActorVOAdapter")
+class ActorVO {
   @JsonKey(name: "adult")
   @HiveField(0)
-      bool? adult;
+  bool? adult;
 
   @JsonKey(name: "id")
   @HiveField(1)
-      int? id;
+  int? id;
 
   @JsonKey(name: "known_for")
   @HiveField(2)
-      List<MovieVO>? knownFor;
+  List<MovieVO>? knownFor;
 
   @JsonKey(name: "popularity")
   @HiveField(3)
-      double? popularity;
+  double? popularity;
 
   @JsonKey(name: "name")
   @HiveField(4)
-      String? name;
+  String? name;
 
   @JsonKey(name: "profile_path")
   @HiveField(5)
-      String? profilePath;
+  String? profilePath;
 
   @JsonKey(name: "known_for_department")
   @HiveField(6)
@@ -61,23 +59,23 @@ class ActorVO{
   @HiveField(11)
   int? order;
 
+  ActorVO({
+     this.adult,
+     this.id,
+     this.knownFor,
+     this.popularity,
+     this.name,
+     this.profilePath,
+    this.knownForDepartment,
+    this.originalName,
+    this.castId,
+    this.character,
+    this.creditId,
+    this.order,
+  });
 
-  ActorVO(
-      this.adult,
-      this.id,
-      this.knownFor,
-      this.popularity,
-      this.name,
-      this.profilePath,
-      this.knownForDepartment,
-      this.originalName,
-      this.castId,
-      this.character,
-      this.creditId,
-      this.order,
-      );
+  factory ActorVO.fromJson(Map<String, dynamic> json) =>
+      _$ActorVOFromJson(json);
 
-  factory ActorVO.fromJson(Map<String,dynamic> json) => _$ActorVOFromJson(json);
-
-  Map<String,dynamic> toJson() => _$ActorVOToJson(this);
+  Map<String, dynamic> toJson() => _$ActorVOToJson(this);
 }

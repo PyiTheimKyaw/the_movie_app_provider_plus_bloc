@@ -17,8 +17,8 @@ class GenreVOAdapter extends TypeAdapter<GenreVO> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return GenreVO(
-      fields[0] as int?,
-      fields[1] as String?,
+      id: fields[0] as int?,
+      name: fields[1] as String?,
     );
   }
 
@@ -48,8 +48,8 @@ class GenreVOAdapter extends TypeAdapter<GenreVO> {
 // **************************************************************************
 
 GenreVO _$GenreVOFromJson(Map<String, dynamic> json) => GenreVO(
-      json['id'] as int?,
-      json['name'] as String?,
+      id: json['id'] as int?,
+      name: json['name'] as String?,
     );
 
 Map<String, dynamic> _$GenreVOToJson(GenreVO instance) => <String, dynamic>{
