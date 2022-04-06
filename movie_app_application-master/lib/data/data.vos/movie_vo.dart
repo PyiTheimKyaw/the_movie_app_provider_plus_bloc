@@ -196,6 +196,17 @@ class MovieVO {
         "";
   }
 
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is MovieVO &&
+          runtimeType == other.runtimeType &&
+          id == other.id &&
+          title == other.title;
+
+  @override
+  int get hashCode => id.hashCode ^ title.hashCode;
+
   //VO mr pr tat properties twy a twt string t ku return pyn
   //null,value mhr,data pr ll kyi lox ya
   @override

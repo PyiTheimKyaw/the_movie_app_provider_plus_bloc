@@ -74,6 +74,18 @@ class ActorVO {
     this.order,
   });
 
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ActorVO &&
+          runtimeType == other.runtimeType &&
+          id == other.id &&
+          originalName == other.originalName;
+
+  @override
+  int get hashCode => id.hashCode ^ originalName.hashCode;
+
   factory ActorVO.fromJson(Map<String, dynamic> json) =>
       _$ActorVOFromJson(json);
 
