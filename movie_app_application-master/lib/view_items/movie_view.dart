@@ -6,10 +6,10 @@ import 'package:movie_app/resources/dimens.dart';
 import 'package:movie_app/widgets/rating_view.dart';
 
 class MovieView extends StatelessWidget {
-  //final Function onTapMovie;
+  final Function onTapMovie;
   final MovieVO? movie;
 
-  MovieView( {required this.movie});
+  MovieView( {required this.movie,required this.onTapMovie});
 
   @override
   Widget build(BuildContext context) {
@@ -19,23 +19,33 @@ class MovieView extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Image.network(
-              "$IMAGE_BASE_URL${movie?.posterPath ?? ""}",
-              height: MOVIE_VIEW_IMAGE_HEIGHT,
-              fit: BoxFit.cover,
+            GestureDetector(
+              onTap: (){
+                onTapMovie();
+              },
+              child: Image.network(
+                "$IMAGE_BASE_URL${movie?.posterPath ?? ""}",
+                height: MOVIE_VIEW_IMAGE_HEIGHT,
+                fit: BoxFit.cover,
+              ),
             ),
             SizedBox(
               height: MARGIN_MEDIUM,
             ),
-            Text(
-              movie?.title ?? "",
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: TEXT_REGULAR_2X,
-                fontWeight: FontWeight.w600,
+            GestureDetector(
+              onTap: (){
+                onTapMovie();
+              },
+              child: Text(
+                movie?.title ?? "",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: TEXT_REGULAR_2X,
+                  fontWeight: FontWeight.w600,
+                ),
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
               ),
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
             ),
             SizedBox(
               height: MARGIN_MEDIUM,

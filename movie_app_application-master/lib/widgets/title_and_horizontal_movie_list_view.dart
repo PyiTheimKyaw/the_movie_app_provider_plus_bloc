@@ -67,11 +67,11 @@ class HorizontalMovieListView extends StatelessWidget {
         padding: EdgeInsets.only(left: MARGIN_MEDIUM_2),
         itemCount: movieList?.length ?? 0,
         itemBuilder: (BuildContext context, int index) {
-          return GestureDetector(
-            onTap: () => onTapMovie(movieList?[index].id),
-            child: MovieView(
-              movie: movieList?[index],
-            ),
+          return MovieView(
+            onTapMovie: (){
+              onTapMovie(movieList?[index].id);
+            },
+            movie: movieList?[index],
           );
         }, onListEndReached: (){
           this.onListEndReached();
