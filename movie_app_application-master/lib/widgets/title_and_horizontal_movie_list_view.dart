@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors,prefer_const_literals_to_create_immutables, sized_box_for_whitespace, prefer_final_fields
+
 import 'package:flutter/material.dart';
 import 'package:movie_app/components/smar_list_view.dart';
 import 'package:movie_app/data/data.vos/movie_vo.dart';

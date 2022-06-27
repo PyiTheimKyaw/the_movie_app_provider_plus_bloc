@@ -69,6 +69,7 @@ class HomePage extends StatelessWidget {
                 ),
                 Selector<HomeBloc, List<MovieVO>?>(
                   selector: (context, bloc) => bloc.mNowPlayingMovies,
+
                   builder: (context, nowPlayingMoviesList, child) =>
                       TitleAndHorizontalMovieListView(
                     (movieId) => _navigateToMovieDetailScreen(context, movieId),
