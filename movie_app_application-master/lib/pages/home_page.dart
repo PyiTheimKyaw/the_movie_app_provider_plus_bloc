@@ -192,6 +192,7 @@ class GenreSectionView extends StatelessWidget {
           ),
         ),
         Container(
+          // height:200,
           color: PRIMARY_COLOR,
           padding: EdgeInsets.only(top: MARGIN_MEDIUM_2, bottom: MARGIN_LARGE),
           child: HorizontalMovieListView(
